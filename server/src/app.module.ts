@@ -1,13 +1,28 @@
 import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { InvitationLinkController } from './invitation-link/invitation-link.controller';
-import { InvitationLinkService } from './invitation-link/invitation-link.service';
-import { InvitationLinkModule } from './invitation-link/invitation-link.module';
+import { UserModule } from './user/user.module';
+import { SequelizeModule } from '@nestjs/sequelize';
+import { User } from './user/user.model';
+import { LinkModule } from './link/link.module';
+import { Link } from './link/link.model';
+import { PaymentModule } from './payment/payment.module';
+import { Payment } from './payment/payment.model';
 
 @Module({
-  imports: [InvitationLinkModule],
-  controllers: [AppController, InvitationLinkController],
-  providers: [AppService, InvitationLinkService],
+  controllers: [AppController],
+  providers: [AppService],
+  imports: [
+    SequelizeModule.forRoot({
+      dialect: 'sqlite',
+      storage: './src/DB/db.sqlite',
+      autoLoadModels: true,
+      models: [User, Link, Payment],
+      sync: {force: true}
+    }),
+    UserModule,
+    LinkModule,
+    PaymentModule
+  ],
 })
 export class AppModule {}
