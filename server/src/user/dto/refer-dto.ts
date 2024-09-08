@@ -1,8 +1,12 @@
+import { Type } from "class-transformer";
 import { IsString } from "class-validator";
 
-export class CreateLinkDto {
+
+export class ReferDto {
     @IsString({message: 'Должно быть строкой'})
-    id: string;
+    @Type(() => String)
+    readonly referId: string;
     @IsString({message: 'Должно быть строкой'})
-    link: string;
+    @Type(() => String)
+    readonly linkRef: string;
 }

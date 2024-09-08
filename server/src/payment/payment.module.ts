@@ -4,10 +4,11 @@ import { PaymentService } from './payment.service';
 import { SequelizeModule } from '@nestjs/sequelize';
 import { Payment } from './payment.model';
 import { User } from 'src/user/user.model';
+import { JwtService } from '@nestjs/jwt';
 
 @Module({
   controllers: [PaymentController],
-  providers: [PaymentService],
+  providers: [PaymentService, JwtService],
   imports: [
     SequelizeModule.forFeature([Payment, User])
   ]

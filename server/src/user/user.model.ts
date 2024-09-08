@@ -21,10 +21,13 @@ export class User extends Model<User> {
     patronymic: string; 
 
     @Column({type: DataType.NUMBER, allowNull: false})
-    phone: number; 
+    phone: string; 
 
     @Column({type: DataType.STRING, allowNull: false})
     email: string;
+
+    @Column({type: DataType.STRING, allowNull: false})
+    password: string;
 
     @Column({type: DataType.INTEGER, allowNull: true})
     referId: number;

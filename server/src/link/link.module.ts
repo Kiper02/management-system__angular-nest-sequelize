@@ -4,10 +4,11 @@ import { LinkService } from './link.service';
 import { SequelizeModule } from '@nestjs/sequelize';
 import { Link } from './link.model';
 import { User } from 'src/user/user.model';
+import { JwtService } from '@nestjs/jwt';
 
 @Module({
   controllers: [LinkController],
-  providers: [LinkService],
+  providers: [LinkService, JwtService],
   imports: [
     SequelizeModule.forFeature([Link, User])
   ]
