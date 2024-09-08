@@ -1,2 +1,4 @@
-export interface CustomJwt {
+export interface ICustomJwt {
+    id: number;
+    email: string;
 }

@@ -1,4 +1,76 @@
 .wrapp {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
     height: 100vh;
     background-color: rgba(238, 234, 234, 0.144);
+}
+
+.wrapp-item {
+    width: 100%;
+    padding: 10px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+
+    border: 1px solid gray;
+    border-radius: 10px;
+}
+
+.btn {
+    padding: 15px 20px;
+    background-color: rgb(81, 81, 168);
+    cursor: pointer;
+    transition: all 0.2s ease-in;
+    border: none;
+    border-radius: 5px;
+}
+
+.btn:hover {
+    background-color: rgb(121, 144, 248);
+}
+
+
+.link {
+    text-align: center;
+    width: 650px;
+    height: 50px;
+    padding: 5px 10px;
+
+    background-color: coral;
+    cursor: pointer;
+}
+
+.link a {
+    transition: all 0.2s ease-in;
+}
+
+.link a:hover {
+    color: rgb(128, 121, 121);
+}
+
+.order-field {
+    background-color: rgb(52, 109, 136);
+
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: none;
+}
+
+.list-orders {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+}
+
+.list-orders__item {
+    padding: 5px 10px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    background-color: rgb(110, 165, 233);
+    border-radius: 5px;
 }

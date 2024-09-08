@@ -13,4 +13,9 @@ export class PaymentService {
         const payment = await this.paymentModel.create(dto);
         return payment;
     }
+
+    async getOrders(id: number) {
+        const orders = await this.paymentModel.findAll({where: {userId: id}})
+        return orders;
+    }
 }

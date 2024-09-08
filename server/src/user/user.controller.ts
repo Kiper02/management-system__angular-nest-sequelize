@@ -25,8 +25,8 @@ export class UserController {
     @ApiResponse({status: 200, type: TokenResponseDto})
     @UsePipes(ValidationPipe)
     @Post('registration/:link')
-    registrationByInvtitation(@Body() createUserdto: CreateUserDto, @Param('link') referDto: ReferDto) {
-        return this.userService.registrationByInvtitation(createUserdto, referDto.linkRef)
+    registrationByInvtitation(@Body() createUserdto: CreateUserDto, @Param('link') linkRef: string) {
+        return this.userService.registrationByInvtitation(createUserdto, linkRef)
     }
 
     @ApiOperation({summary: 'Авторизация пользователя'})
@@ -45,12 +45,11 @@ export class UserController {
         return this.userService.getStatisticsAll();
     }
 
-    @UsePipes(ValidationPipe)
     @ApiOperation({summary: 'Количество приглашенных пользователей одним пользователем'})
     @ApiResponse({status: 200, type: '0'})
     @UseGuards(AuthGuard)
     @Get('statistics/:id')
-    getStatisticsByUser(@Param('id') referDto: ReferDto) {
-        return this.userService.getStatisticsByUser(referDto.referId)
+    getStatisticsByUser(@Param('id') id: string) {
+        return this.userService.getStatisticsByUser(Number(id))
     }
 }

@@ -34,7 +34,7 @@ export class AuthService {
 
   registrationByInvtitation(dto: IAuth) {
     this.http
-      .post<IToken>(`${environment.apiUrl}/user/:link`, dto)
+      .post<IToken>(`${environment.apiUrl}/user/registration/:link`, dto)
       .subscribe((data: IToken) => {
         localStorage.setItem('token', data.token);
         this.isAuth = true;

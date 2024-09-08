@@ -1,21 +1,20 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environment.development';
-import { ILink } from '../interfaces/link/link';
 import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
-export class LinkService {
+export class StatisticsService {
 
   constructor(private http: HttpClient) { }
 
-  generateLink(id: number){
-    return this.http.post<ILink>(`${environment.apiUrl}/link`, {id})
+  getAll():Observable<number> {
+    return this.http.get<number>(`${environment.apiUrl}/user/statistics`)
   }
 
-  getLink(id: string) {
-    return this.http.get<ILink>(`${environment.apiUrl}/link/${id}`)
+  getByUser(id: number):Observable<number> {
+    return this.http.get<number>(`${environment.apiUrl}/user/statistics/${id}`)
   }
 }

@@ -1,0 +1,56 @@
+.wrapp {
+    width: 100vw;
+    height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.form {
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+
+    background-color: indigo;
+    color: black;
+    font-weight: bold;
+    border-radius: 5px;
+}
+
+.form-field {
+    padding: 10px 15px;
+    background-color: rgb(153, 129, 209);
+    border: none;
+    border-radius: 5px;
+    transition: all 0.2s ease-in;
+}
+
+.form-field:hover {
+    background-color: rgb(107, 90, 146);
+}
+
+.btn {
+    padding: 10px 15px;
+
+    background-color: rgb(106, 106, 230);
+    border: none;
+    border-radius: 5px;
+    transition: all 0.2s ease-in;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background-color: rgb(62, 62, 212);
+}
+
+.cta {
+    margin-top: 10px;
+    font-size: 13px;
+    color: white;
+}
+
+.cta a {
+    color: rgb(50, 108, 233);
+}

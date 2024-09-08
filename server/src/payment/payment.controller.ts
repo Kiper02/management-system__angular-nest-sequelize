@@ -1,4 +1,4 @@
-import { Body, Controller, Post, UseGuards, UsePipes, ValidationPipe } from '@nestjs/common';
+import { Body, Controller, Get, Param, Post, UseGuards, UsePipes, ValidationPipe } from '@nestjs/common';
 import { CreatePaymentDto } from './dto/create-payment-dto';
 import { PaymentService } from './payment.service';
 import { AuthGuard } from 'src/guards/auth-guard';
@@ -18,5 +18,14 @@ export class PaymentController {
     @Post()
     create(@Body() dto: CreatePaymentDto) {
         return this.paymentService.create(dto);
+    }
+
+    @ApiOperation({summary: 'Получение ордеров'})
+    @ApiResponse({status: 200, type: Payment})
+    @UseGuards(AuthGuard)
+    @Get(':id')
+    getOrders(@Param('id') id: string) {
+        console.log(id);
+        return this.paymentService.getOrders(Number(id));
     }
 }

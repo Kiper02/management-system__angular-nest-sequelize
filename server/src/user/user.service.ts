@@ -23,7 +23,9 @@ export class UserService {
     }
 
     async registrationByInvtitation(createUserDto: CreateUserDto, link: string) {
-        const referId = Number(link.split('=')[0])
+        console.log(link);
+        const referId = Number(link.split('@')[0])
+        console.log('referId ------------' + referId);
         await this.checkCandidate(createUserDto.email);
         const hashPassword = await bcrypt.hash(createUserDto.password, 4);
         const user = await this.userModel.create({...createUserDto, password: hashPassword, referId})
@@ -41,8 +43,8 @@ export class UserService {
         return count
     }
 
-    async getStatisticsByUser(referId: string) {
-        const count = await this.userModel.count({where: {referId: Number(referId)}})
+    async getStatisticsByUser(id: number) {
+        const count = await this.userModel.count({where: {referId: id}})
         return count
     }
 

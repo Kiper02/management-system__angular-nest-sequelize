@@ -1,0 +1,19 @@
+<app-header></app-header>
+<div class="wrapp">
+    <form class="form" [formGroup]="registrationForm">
+        <input class="form-field" placeholder="Введите email" type="email" formControlName="email" required/>
+        <input class="form-field" placeholder="Введите пароль" type="password" formControlName="password" required/>
+        <input class="form-field" placeholder="Введите Имя" formControlName="firstName" required/>
+        <input class="form-field" placeholder="Введите Отчество" formControlName="patronymic" required/>
+        <input class="form-field" placeholder="Введите Фамилию" formControlName="lastName" required/>
+        <input class="form-field" placeholder="Введите номер" type="tel" formControlName="phone" required/>
+        
+
+        <button 
+            class="btn"
+            (click)="registrationByInvtitation()"
+        >
+            Зарегистрироваться
+        </button>
+    </form>
+</div>

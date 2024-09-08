@@ -4,10 +4,6 @@ import { IsString } from "class-validator";
 
 
 export class ReferDto {
-    @ApiProperty({example: 'referId', description: 'Уникальный индификатор пригласившего пользователя'})
-    @IsString({message: 'Должно быть строкой'})
-    @Type(() => String)
-    readonly referId: string;
 
     @ApiProperty({example: 'linkRef', description: 'Уникальная ссылка пригласившего пользователя'})
     @IsString({message: 'Должно быть строкой'})

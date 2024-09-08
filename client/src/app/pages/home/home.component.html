@@ -1,9 +1,29 @@
 <app-profile-header></app-profile-header>
     <div class="container">
         <div class="wrapp">
-            <h1>Основной функционал</h1>
-            <div>
-                
+            <h1 class="header">Тестирование функционала</h1>
+            <div class="wrapp-item">
+                <h2>Ссылки</h2>
+                <button class="btn" (click)="generateLink()">Сгенерировать ссылку - приглашение</button>
+                <p class="link"><a>{{link}}</a></p>
+            </div>
+
+            <div class="wrapp-item">
+                <h2>Статистика</h2>
+                <p>Количество приглашенных <b>вами</b>: {{statiscticsByUser}}</p>
+                <p>Количество приглашенных <b>всего</b>: {{statisticsAll}}</p>
+            </div>
+
+            <div class="wrapp-item">
+                <h2>Оплата</h2>
+                <button class="btn" (click)="createOrder()">Создать ордер</button>
+                <input class="order-field" placeholder="Введите сумму ордера" [formControl]="controlAmount" required type="number"/>
+                <ul class="list-orders">
+                    <li class="list-orders__item" *ngFor="let order of orders; index as i">
+                        <p>{{order.amount}}</p>
+                        <p>{{order.createdAt}}</p>
+                    </li>
+                </ul>
             </div>
         </div>
 </div>

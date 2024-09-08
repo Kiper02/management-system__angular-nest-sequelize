@@ -1,4 +1,4 @@
-import { Body, Controller, Post, UseGuards } from '@nestjs/common';
+import { Body, Controller, Get, Param, Post, UseGuards } from '@nestjs/common';
 import { LinkService } from './link.service';
 import { CreateLinkDto } from './dto/create-link-dto';
 import { AuthGuard } from 'src/guards/auth-guard';
@@ -14,8 +14,15 @@ export class LinkController {
     @ApiResponse({status: 200, type: Link})
     @UseGuards(AuthGuard)
     @Post()
-    generateLink(@Body('id') dto: CreateLinkDto) {
-        console.log(dto);
-        return this.linkService.generateLink(dto)
+    generateLink(@Body('id') id: number) {
+        console.log(id);
+        return this.linkService.generateLink(id)
+    }
+
+    @ApiOperation({summary: 'Получение ссылки'})
+    @UseGuards(AuthGuard)
+    @Get(':id')
+    getLink(@Param('id') id: string) {
+        return this.linkService.getLink(Number(id))
     }
 }
