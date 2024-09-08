@@ -9,7 +9,8 @@ export class LinkService {
     constructor(@InjectModel(Link) private linkModel: typeof Link) {}
 
     async generateLink(id: string) {
-        const link = `${id}=${uuidv4()}`
+        console.log('controller');
+        const link = `http://localhost:5000/user/${id}=${uuidv4()}`
         console.log(link);
         const model = await this.linkModel.create({link});
         return model

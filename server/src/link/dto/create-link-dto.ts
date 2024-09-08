@@ -1,8 +1,12 @@
+import { ApiProperty } from "@nestjs/swagger";
 import { IsString } from "class-validator";
 
 export class CreateLinkDto {
-    @IsString({message: 'Должно быть строкой'})
+    // @ApiProperty({example: 'id', description: 'Уникальный индификатор'})
+    // @IsString({message: 'Должно быть строкой'})
     id: string;
-    @IsString({message: 'Должно быть строкой'})
+
+    // @ApiProperty({example: '1=9b1deb4d-3b7d-4bad-9bdd-2b0d7b3dcb6d', description: 'Уникальная ссылка приглашения'})
+    // @IsString({message: 'Должно быть строкой'})
     link: string;
 }

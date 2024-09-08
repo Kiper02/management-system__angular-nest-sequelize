@@ -52,7 +52,7 @@ export class UserService {
 
     async generateToken(user: User) {
         const payload = {id: user.id, email: user.email}
-        return {token: this.jwtService.sign(payload)}
+        return({token: this.jwtService.sign(payload, {secret: process.env.PRIVATE_KEY})}); 
     }
 
     async checkCandidate(email) {
