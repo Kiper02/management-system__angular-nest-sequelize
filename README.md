@@ -1,7 +1,7 @@
 Для запуска сервера:
   1: cd server;
   2: yarn install;
-  3: yard start:dev;
+  3: yarn start:dev;
 
 Для запуска клиента:
   1:cd client;
