@@ -6,6 +6,7 @@ import { AuthGuard } from 'src/guards/auth-guard';
 import { ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
 import { TokenResponseDto } from './dto/token-response-dto';
 import { ValidationPipe } from 'src/pipes/validation/validation.pipe';
+import { LoginDto } from './dto/login-dto';
 
 @ApiTags('Пользователи')
 @Controller('user')
@@ -32,8 +33,8 @@ export class UserController {
     @ApiResponse({status: 200, type: TokenResponseDto})
     @UsePipes(ValidationPipe)
     @Post('login')
-    login(@Body() createUserDto: CreateUserDto) {
-        return this.userService.login(createUserDto);
+    login(@Body() loginDto: LoginDto) {
+        return this.userService.login(loginDto);
     }
 
     @ApiOperation({summary: 'Количество всех приглашенных пользователей'})

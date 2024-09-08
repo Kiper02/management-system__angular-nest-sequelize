@@ -5,6 +5,7 @@ import { User } from './user.model';
 import { Op } from 'sequelize';
 import { JwtService } from '@nestjs/jwt';
 import * as bcrypt from 'bcrypt'
+import { LoginDto } from './dto/login-dto';
 
 @Injectable()
 export class UserService {
@@ -29,8 +30,8 @@ export class UserService {
         return this.generateToken(user);
     }
 
-    async login(createUserDto: CreateUserDto) {
-        const user = await this.validateUser(createUserDto);
+    async login(loginDto: LoginDto) {
+        const user = await this.validateUser(loginDto);
         return this.generateToken(user);
     }
 
@@ -62,12 +63,12 @@ export class UserService {
         }
     }
 
-    private async validateUser(createUserDto: CreateUserDto) {
-        const user = await this.getUserByEmail(createUserDto.email);
+    private async validateUser(loginDto: LoginDto) {
+        const user = await this.getUserByEmail(loginDto.email);
         if(!user) {
             throw new HttpException('Пользователя с таким email не существует', HttpStatus.BAD_REQUEST)
         }
-        const passwordEquals = await bcrypt.compare(createUserDto.password, user.password);
+        const passwordEquals = await bcrypt.compare(loginDto.password, user.password);
         if(user && passwordEquals) {
             return user;
         }

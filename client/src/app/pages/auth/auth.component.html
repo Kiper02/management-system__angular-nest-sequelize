@@ -1,0 +1,21 @@
+<app-header></app-header>
+<div class="wrapp">
+    <form class="form" [formGroup]="currentFormGroup">
+        <input class="form-field" placeholder="Введите email" type="email" formControlName="email" required/>
+        <input class="form-field" placeholder="Введите пароль" type="password" formControlName="password" required/>
+        <div *ngIf="url === 'registration'" class="form-fields">
+            <input class="form-field" placeholder="Введите Имя" formControlName="firstName" required/>
+            <input class="form-field" placeholder="Введите Отчество" formControlName="patronymic" required/>
+            <input class="form-field" placeholder="Введите Фамилию" formControlName="lastName" required/>
+            <input class="form-field" placeholder="Введите номер" type="tel" formControlName="phone" required/>
+        </div>
+
+        <button 
+            class="btn"
+            (click)="url === 'login' ? login() : registration()"
+        >
+            {{ url === 'login' ? 'Войти' : 'Зарегистрироваться' }}
+        </button>
+        <p class="cta" *ngIf="url === 'login'">Нет аккаунта? <a routerLink="/registration">Зарегистрироваться</a></p>
+    </form>
+</div>

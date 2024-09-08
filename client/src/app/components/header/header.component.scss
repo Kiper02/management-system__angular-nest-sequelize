@@ -1,0 +1,37 @@
+.header {
+    padding: 10px 20px;
+    background-color: #91b3f7;
+    transition: box-shadow 0.5s ease-in-out;
+}
+
+.header:hover {
+    box-shadow: 0 1px 10px rgba(80, 79, 79, 0.5);
+    position: relative;
+    z-index: 1;
+}
+
+.wrapp {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header-list {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.header-list__item {
+    padding: 10px 20px;
+    background-color: rgb(77, 138, 196);
+    border-radius: 5px;
+    list-style-type: none;
+    transition: all 0.2s ease-in;
+    cursor: pointer;
+}
+
+.header-list__item:hover {
+    background-color: rgb(105, 169, 230);
+}
